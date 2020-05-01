@@ -10,7 +10,8 @@ class TemperatureConversion:
         while conversion_type not in [1, 2, 3, 4, 5, 6]:
             try:
                 conversion_type = int(input("Choose a type of conversion by entering a number from 1 to 6: "))
-                raise ValueError  # raise error to print the error message from below
+                if conversion_type not in [None, 1, 2, 3, 4, 5, 6]:
+                    raise ValueError
             except ValueError:
                 print("Invalid input. Please enter a number from 1 to 6 to choose the type of conversion.")
         return conversion_type
@@ -51,5 +52,5 @@ class TemperatureConversion:
         return converted_temp
 
 
-run = TemperatureConversion.convert_temperature(TemperatureConversion.get_conversion_type(),
-                                                TemperatureConversion.get_start_temp())
+# run = TemperatureConversion.convert_temperature(TemperatureConversion.get_conversion_type(),
+#                                                TemperatureConversion.get_start_temp())
