@@ -26,30 +26,54 @@ class TemperatureConversion:
             except ValueError:
                 print("The temperature has to be a numerical value.")
 
-    # conversion method
     @staticmethod
-    def convert_temperature(conversion_type: int, start_temp: float) -> float:
-        converted_temp = None
-        if conversion_type == 1: # Celsius to Kelvin
-            converted_temp = round(start_temp + 273.15, 2)
-            print(str(start_temp) + " degree Celsius is equal to " + str(converted_temp) + " degree Kelvin")
-        elif conversion_type == 2:  # Celsius to Fahrenheit
-            converted_temp = round((start_temp * 9 / 5) + 32, 2)
-            print(str(start_temp) + " degree Celsius is equal to " + str(converted_temp) + " degree Fahrenheit")
-        elif conversion_type == 3:  # Kelvin to Celsius
-            converted_temp = round(start_temp - 273.15, 2)
-            print(str(start_temp) + " degree Kelvin is equal to " + str(converted_temp) + " degree Celsius")
-        elif conversion_type == 4:  # Kelvin to Fahrenheit
-            converted_temp = round((start_temp - 273.15) * 9 / 5 + 32, 2)
-            print(str(start_temp) + " degree Kelvin is equal to " + str(converted_temp) + " degree Fahrenheit")
-        elif conversion_type == 5:  # Fahrenheit to Celsius
-            converted_temp = round((start_temp - 32) * 5 / 9, 2)
-            print(str(start_temp) + " degree Fahrenheit is equal to " + str(converted_temp) + " degree Celsius")
-        elif conversion_type == 6:  # Fahrenheit to Kelvin
-            converted_temp = round((start_temp - 32) * 5 / 9 + 273.15, 2)
-            print(str(start_temp) + " degree Fahrenheit is equal to " + str(converted_temp) + " degree Kelvin")
+    def convert_celsius_to_kelvin(start_temp) -> float:
+        converted_temp = round(start_temp + 273.15, 2)
         return converted_temp
 
+    @staticmethod
+    def convert_celsius_to_fahrenheit(start_temp) -> float:
+        converted_temp = round((start_temp * 9 / 5) + 32, 2)
+        return converted_temp
 
-run = TemperatureConversion.convert_temperature(TemperatureConversion.get_conversion_type(),
-                                                TemperatureConversion.get_float())
+    @staticmethod
+    def convert_kelvin_to_celsius(start_temp) -> float:
+        converted_temp = round(start_temp - 273.15, 2)
+        return converted_temp
+
+    @staticmethod
+    def convert_kelvin_to_fahrenheit(start_temp) -> float:
+        converted_temp = round((start_temp - 273.15) * 9 / 5 + 32, 2)
+        return converted_temp
+
+    @staticmethod
+    def convert_fahrenheit_to_celsius(start_temp) -> float:
+        converted_temp = round((start_temp - 32) * 5 / 9, 2)
+        return converted_temp
+
+    @staticmethod
+    def convert_fahrenheit_to_kelvin(start_temp) -> float:
+        converted_temp = round((start_temp - 32) * 5 / 9 + 273.15, 2)
+        return converted_temp
+
+    @staticmethod
+    def calculate_and_print_result(conversion_type, start_temp):
+        if conversion_type == 1:
+            print(start_temp, "°C is equal to ", TemperatureConversion.convert_celsius_to_kelvin(start_temp), "K")
+        elif conversion_type == 2:
+            print(start_temp, "°C is equal to ", TemperatureConversion.convert_celsius_to_fahrenheit(start_temp), "°F")
+        elif conversion_type == 3:
+            print(start_temp, "K is equal to ", TemperatureConversion.convert_kelvin_to_celsius(start_temp), "°C")
+        elif conversion_type == 4:
+            print(start_temp, "K is equal to ", TemperatureConversion.convert_kelvin_to_fahrenheit(start_temp),"°F")
+        elif conversion_type == 5:
+            print(start_temp, "°F is equal to ", TemperatureConversion.convert_fahrenheit_to_celsius(start_temp), "°C")
+        elif conversion_type == 6:
+            print(start_temp, "°F is equal to ", TemperatureConversion.convert_fahrenheit_to_kelvin(start_temp), "K")
+
+
+TemperatureConversion.calculate_and_print_result(TemperatureConversion.get_conversion_type(), TemperatureConversion.get_float())
+
+
+
+
