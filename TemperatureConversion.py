@@ -18,14 +18,13 @@ class TemperatureConversion:
 
     # method to get the temperature that has to be converted
     @staticmethod
-    def get_start_temp() -> float:
-        start_temp = None
-        while not isinstance(start_temp, float):
+    def get_float(msg="Please enter the temperature to convert: ") -> float:
+        while True:
             try:
-                start_temp = float(input("Please enter the temperature to convert: "))
+                start_temp = float(input(msg))
+                return start_temp
             except ValueError:
                 print("The temperature has to be a numerical value.")
-        return start_temp
 
     # conversion method
     @staticmethod
@@ -52,5 +51,5 @@ class TemperatureConversion:
         return converted_temp
 
 
-# run = TemperatureConversion.convert_temperature(TemperatureConversion.get_conversion_type(),
-#                                                TemperatureConversion.get_start_temp())
+run = TemperatureConversion.convert_temperature(TemperatureConversion.get_conversion_type(),
+                                                TemperatureConversion.get_float())
